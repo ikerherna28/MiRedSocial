@@ -1,0 +1,265 @@
+/* Estilos compartidos */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
+
+header {
+    background-color: #3897f0;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2671b5;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* Estilos específicos para cada página */
+
+/* editar-perfil.html */
+h1 {
+    margin-top: 20px;
+}
+
+/* dashboard.html */
+#usuario-info {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    padding: 10px;
+}
+
+#fotoPerfilUsuario {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#nombreUsuario {
+    font-size: 18px; /* Tamaño de fuente ajustable según preferencia */
+}
+
+#post-form {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+}
+
+#opciones-usuario {
+    position: relative;
+    display: inline-block;
+}
+
+#opciones-usuario:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+#editar-perfil-modal,
+#seguridad-modal,
+#amigos-modal {
+    display: none;
+    /* Estilos para los modales */
+}
+
+/* change-password.html */
+
+/* amigos.html */
+.solicitudes,
+.usuarios-sugeridos,
+.buscador,
+.resultados-busqueda {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.solicitud-item,
+.usuario-sugerido-item,
+.usuario-encontrado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.accion-amigo,
+.notificacion {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Estilo específico para Solicitudes de Amistad */
+.solicitud-item button:nth-child(1) {
+    background-color: #8eff8e; /* Verde claro */
+}
+
+.solicitud-item button:nth-child(2) {
+    background-color: #ff8e8e; /* Rojo claro */
+}
+
+#btnBuscar {
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#btnBuscar:hover {
+    background-color: #2671b5;
+}
+
+/* Estilo para la notificación de solicitud enviada */
+#notificacionSolicitud,
+#notificacionBusqueda {
+    display: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#notificacionBusqueda {
+    background-color: #d83232; /* Cambio de color para la notificación de búsqueda */
+}
+
+/* Estilo adicional para Resultados de Búsqueda */
+.usuario-encontrado-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+}
+
+.usuario-encontrado-item p {
+    margin-bottom: 10px; /* Añade espacio debajo del nombre de usuario */
+}
+
+.usuario-encontrado-item button {
+    align-self: flex-end; /* Alinea el botón al final del contenedor */
+    margin-top: 15px; /* Añade espacio encima del botón */
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.usuario-encontrado-item button:hover {
+    background-color: #2671b5;
+}
+
+.foto-perfil {
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    margin-right: 10px; /* Añade espacio a la derecha de la imagen */
+}
+
+#volverAlInicio {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #3897f0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#volverAlInicio:hover {
+    background-color: #2671b5;
+}

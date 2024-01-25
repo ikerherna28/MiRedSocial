@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Mis Amigos - Mi Red Social</title>
+</head>
+<body>
+    <header>
+        <h1>Mis Amigos</h1>
+        <a href="dashboard.html">Volver al Inicio</a>
+    </header>
+
+    <main>
+        <section class="solicitudes">
+            <h2>Solicitudes de Amistad</h2>
+            <!-- Modificado: Se muestran solicitudes con nombres aleatorios -->
+            <div class="solicitud-item">
+                <img src="./img/paquito.png" alt="Foto de Perfil" class="foto-perfil">
+                <p><i>@pakito345</i>  te ha enviado una solicitud</p>
+                <div class="accion-amigo">
+                    <button onclick="aceptarSolicitud('pakito345')">Aceptar</button>
+                    <button onclick="denegarSolicitud('pakito345')">Denegar</button>
+                </div>
+            </div>
+            <div class="solicitud-item">
+                <img src="https://unavatar.io/github/mikeldalmauc" alt="Foto de Perfil" class="foto-perfil">
+                <p><i>@mikel.dalmao</i>  te ha enviado una solicitud</p>
+                <div class="accion-amigo">
+                    <button onclick="aceptarSolicitud('mikel.dalmao')">Aceptar</button>
+                    <button onclick="denegarSolicitud('mikel.dalmao')">Denegar</button>
+                </div>
+            </div>
+            <!-- Otras solicitudes de amistad se mostrarían aquí -->
+
+        </section>
+
+        <section class="usuarios-sugeridos">
+            <h2>Usuarios Sugeridos</h2>
+            <!-- Modificado: Se muestra un nombre de usuario completamente aleatorio -->
+            <div class="usuario-sugerido-item">
+                <img src="./img/juan_alberto.jpg" alt="Foto de Perfil" class="foto-perfil">
+                <p><i>@juan_alverto33</i></p>
+                <button onclick="enviarSolicitud('juan_alverto33')">Añadir Amigo</button>
+            </div>
+
+            <!-- Otros usuarios sugeridos se mostrarían aquí -->
+
+        </section>
+
+        <section class="buscador">
+            <h2>Buscar Usuarios</h2>
+            <div class="accion-amigo">
+                <input type="text" id="inputBuscador" placeholder="Nombre de Usuario">
+                <button id="btnBuscar" onclick="buscarUsuario()">Buscar</button>
+            </div>
+        </section>
+
+        <section class="resultados-busqueda">
+            <h2>Resultados de Búsqueda</h2>
+            <div class="usuario-encontrado-item" id="resultadoBusqueda">
+                <!-- Los resultados de la búsqueda se mostrarán aquí -->
+            </div>
+        </section>
+
+        <div class="notificacion" id="notificacionSolicitud">
+            <!-- La notificación de solicitud de amistad se mostrará aquí -->
+        </div>
+
+        <div class="notificacion" id="notificacionBusqueda">
+            <!-- La notificación de búsqueda se mostrará aquí -->
+        </div>
+    </main>
+<script>
+    function aceptarSolicitud(usuario) {
+        alert(`Solicitud de ${usuario} aceptada`);
+    }
+
+    function denegarSolicitud(usuario) {
+        alert(`Solicitud de ${usuario} denegada`);
+    }
+
+    function enviarSolicitud(usuario) {
+        // Lógica simulada: deberías hacer una solicitud al servidor para enviar una solicitud de amistad
+        mostrarNotificacion(`Solicitud de amistad enviada a ${usuario}`, 'notificacionSolicitud');
+    }
+
+    function buscarUsuario() {
+        const nombreUsuario = document.getElementById('inputBuscador').value;
+
+        // Simulación de búsqueda
+        mostrarNotificacion('Buscando usuarios', 'notificacionBusqueda');
+        setTimeout(() => {
+            document.getElementById('notificacionBusqueda').style.display = 'none';
+
+            // Simulación de resultados de búsqueda
+            const resultadoBusqueda = document.getElementById('resultadoBusqueda');
+
+            // Verificar si el usuario fue encontrado (ajusta esta lógica según sea necesario)
+            const nombreUsuarioEncontrado = true;
+            if (nombreUsuarioEncontrado) {
+                resultadoBusqueda.innerHTML = `
+                    <div class="usuario-encontrado-item">
+                        <img src="https://unavatar.io/github/${nombreUsuario}" alt="Foto de Perfil" class="foto-perfil">
+                        <p>@${nombreUsuario}</p>
+                        <button onclick="enviarSolicitud('${nombreUsuario}')">Añadir Amigo</button>
+                    </div>
+                `;
+            } else {
+                // Si el usuario no fue encontrado, mostrar la imagen predeterminada sin texto adicional
+                resultadoBusqueda.innerHTML = `
+                    <div class="usuario-encontrado-item">
+                        <img src="foto-perfil.png" alt="Foto de Perfil" class="foto-perfil">
+                    </div>
+                `;
+            }
+        }, 3000);
+    }
+
+    function mostrarNotificacion(mensaje, idElemento) {
+        const notificacion = document.getElementById(idElemento);
+        notificacion.textContent = mensaje;
+        notificacion.style.display = 'flex';
+
+        // Ocultar la notificación después de unos segundos
+        setTimeout(() => {
+            notificacion.style.display = 'none';
+        }, 3000);
+    }
+</script>
+</body>
+</html>

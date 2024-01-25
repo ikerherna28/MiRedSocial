@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/index.css">
+    <title>Mi Red Social - Iniciar Sesión</title>
+</head>
+<body>
+    <header>
+        <h1>Mi Red Social - Iniciar Sesión</h1>
+    </header>
+
+    <main>
+        <form onsubmit="iniciarSesion(event)">
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+
+        <p>¿Aún no tienes una cuenta? <a href="registro.html">Regístrate</a></p>
+        <p id="mensajeError" style="color: red;"></p>
+        <p><a href="index-change-password.html">¿Olvidaste tu contraseña?</a></p>
+    </main>
+
+    <script>
+        function iniciarSesion(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Obtener la información del usuario desde donde la hayas guardado
+            const usuarioGuardado = JSON.parse(localStorage.getItem(username));
+
+            if (usuarioGuardado) {
+                // Verificar la contraseña
+                if (usuarioGuardado.password === password) {
+                    // Almacenar el usuario autenticado en localStorage
+                    localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioGuardado));
+
+                    // Redirigir a la página principal o hacer otras acciones después del inicio de sesión exitoso
+                    window.location.href = 'dashboard.html';
+                } else {
+                    document.getElementById('mensajeError').textContent = 'Contraseña incorrecta. Por favor, inténtalo de nuevo.';
+                }
+            } else {
+                document.getElementById('mensajeError').textContent = 'El nombre de usuario no existe. Por favor, regístrate.';
+            }
+        }
+    </script>
+</body>
+</html>

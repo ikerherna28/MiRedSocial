@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/editar-perfil.css">
+    <title>Editar Perfil - Mi Red Social</title>
+</head>
+<body>
+    <header>
+        <h1>Editar Perfil</h1>
+        <a href="dashboard.html">Volver al Inicio</a>
+    </header>
+
+    <form onsubmit="guardarCambios(); return false;">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="telefono">Número de Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+    <script>
+        // Función para guardar cambios (puedes implementar según tus necesidades)
+        function guardarCambios() {
+            // Implementa la lógica para guardar los cambios del perfil
+            // Puedes obtener los valores de los campos utilizando document.getElementById
+            // y luego realizar las acciones necesarias (por ejemplo, enviar a un servidor).
+            alert("Cambios de perfil guardados");
+        }
+    </script>
+</body>
+</html>
