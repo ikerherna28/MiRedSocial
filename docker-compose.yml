@@ -14,7 +14,7 @@ services:
       - ./:/var/www/html
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
   mysql:
-    image: mysql:latest
+    image: mysql:8.0.3
     ports:
       - "33006:3306"
     environment:

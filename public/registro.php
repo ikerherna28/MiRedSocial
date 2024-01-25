@@ -1,5 +1,8 @@
+<!-- "registro.php" - aqui el usuario se registrara para despues poder inciar sesion -->
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,16 +30,18 @@
                 return false;
             }
         }
-    
     </script>
+
     <main>
-        <form action="registrationConfirm.php" method="post" onsubmit="return validarContrasenas()">
+        <form action="registrationConfirm.php" method="post" onsubmit="return validarContrasenas()" ENCTYPE="multipart/form-data">
+            <!-- Informacion personal del usuario -->
             <label for="nombre">Nombre:</label>
             <input type="text" name="izena" id="nombre" required>
 
             <label for="apellido">Apellido:</label>
             <input type="text" name="abizena" id="apellido" required>
 
+            <!-- Nombre de usuario (username) -->
             <label for="username">Nombre de Usuario:</label>
             <input type="text" name="erabiltzailea" id="username" required>
             
@@ -49,10 +54,10 @@
             <label for="confirmarPassword">Confirmar Contraseña:</label>
             <input type="password" name="pasahitza2" id="confirmarPassword" required>
 
-            <!-- Nuevo campo para la foto de perfil -->
-            <label for="fotoPerfil">Foto de Perfil:</label>
-            <input type="file" id="fotoPerfil" name="foto" accept="image/*" required>
-
+            <!-- Subir foto de perfil -->
+            <label for="foto">Foto de Perfil:</label>
+            <input type="file" name="foto">
+            <!-- Boton de registro -->   
             <button type="submit">Registrarse</button>
         </form>
         <p id="UsuarioExsistente"></p>
@@ -60,50 +65,9 @@
     </main>
 
 
-<!-- <body>
-    <header>
-        <div class="header-line">
-            XIKER, IKER ETA HEGOI
-        </div>
-    </header>
-    <div class="container">
-        <div class="login-box">
-            <div class="title-box blue-background">
-                <h2>Erabiltzailea Izena eman</h2>
-            </div>
-            <form action="registrationConfirm.php" method="post" onsubmit="return validarContrasenas();">
-                <br><br><br>
-                <label for="erabiltzailea">Erabiltzaile Izena:</label>
-                <input type="text" name="erabiltzailea" placeholder="Erabiltzailea" required />
-                <br /><br>
-                <label for="izena">Izena:</label>
-                <input type="text" id="izena" name="izena" placeholder="izena" required>
-                <br><br>
-                <label for="abizena">Abizena:</label>
-                <input type="text" id="abizena" name="abizena" placeholder="abizena" required>
-                <br><br>
-                <label for="emaila">Posta Elektronikoa:</label>
-                <input type="email" id="emaila" name="emaila" placeholder="emaila" required>
-                <br><br>
-                <label for="pasahitza">Pasahitza:</label>
-                <input type="password" name="pasahitza" placeholder="Pasahitza" required />
-                <br /><br>
-                <label for="pasahitza2">Errepikatu pasahitza:</label>
-                <input type="password" name="pasahitza2" placeholder="Pasahitza" required />
-                <br /><br>
-                <button type="submit">Erregistratu</button>
-            </form>
-            <p id="UsuarioExsistente"></p>
-        </div>
-        <aside>
-            <img src="photo.jpg" alt="Logo" class="logo">
-        </aside>
-    </div>
-</body>
-
-</html> -->
+<!-- Si el nombre de usuario existe aparecer mensaje en rojo -->
 <?php if (isset($_GET["Exixtente"]) && $_GET["Exixtente"]) { ?>
     <script>
-        ErabilErregistratuta('Erabiltzailea jadanik erregistratuta dago. Mesedez, saiatu berriz. edo <a href=\'index.php\'>hasi saioa</a>');
+        ErabilErregistratuta('El usuario introducido ya existe! Cambia el nombre de usuario o si ya tienes una cuenta <a href=\'index.php\'>Inicia sesion</a>');
         </script>
 <?php } ?>
