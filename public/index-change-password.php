@@ -1,36 +1,40 @@
-<!-- change-password.html -->
+<!-- index-change-password.html -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/index-change-password.css">
     <title>Mi Red Social - Cambiar Contraseña</title>
 </head>
-<body>
-    <header>
-        <h1>Mi Red Social - Cambiar Contraseña</h1>
-        <a href="index.php">Volver al Inicio</a>
-    </header>
 
-    <main>
-        <form onsubmit="cambiarContraseña(event)">
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" id="username" required>
+<body style="display:flex; align-items:center; justify-content:center;">
+    <main class="login-page">
+        <div class="form" >
+            <form onsubmit="cambiarContraseña(event)">
+                <h2>Cambiar Contraseña</h2>
+                <!-- REVISAR SI ESTA BIEN, NO ESTA EMPAREJADO CON OTRO PHP.. -->
+                <!-- REVISAR SI ESTA BIEN, NO ESTA EMPAREJADO CON OTRO PHP.. -->
+                <input type="text" name="erabiltzailea" placeholder="Nombre de usuario *" required/>
+                <input type="email" name="emaila" placeholder="Correo electronico *" required/>
+                <input type="password" name="pasahitza" placeholder="Contraseña nueva *" required/>
+                <input type="password" name="pasahitza2" placeholder="Repetir nueva contraseña *" required/>
+                <!-- REVISAR SI ESTA BIEN.. -->
+                <!-- REVISAR SI ESTA BIEN-->
+                <button type="submit" class="btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Cambiar Contraseña
+                </button>
+                <br><br>
+                <p class="message">¿Has solucionado tu problema? <a href="inicionuevo.php">Inicia Sesion</a></p>
+            </form>
 
-            <label for="oldPassword">Contraseña Actual:</label>
-            <input type="password" id="oldPassword" required>
-
-            <label for="newPassword">Nueva Contraseña:</label>
-            <input type="password" id="newPassword" required>
-
-            <label for="confirmNewPassword">Confirmar Nueva Contraseña:</label>
-            <input type="password" id="confirmNewPassword" required>
-
-            <button type="submit">Cambiar Contraseña</button>
-        </form>
-
-        <p id="mensajeError" style="color: red;"></p>
+            <p id="mensajeError" class="message"></p>
+        </div>
     </main>
 
     <script>
@@ -73,4 +77,5 @@
         }
     </script>
 </body>
+
 </html>
