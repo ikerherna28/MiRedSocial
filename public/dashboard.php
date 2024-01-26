@@ -6,29 +6,30 @@ $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $correo = $_SESSION['email'];
 $foto_perfil = $_SESSION['foto_perfil'];
-
 ?>
-<!-- dashboard.html -->
+
+<!-- dashboard-nuevo.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/dashboard-nuevo.css">
     <title>Mi Red Social - Dashboard</title>
+
 </head>
 <body>
     <header>
         <h1>Bienvenido a Mi Red Social</h1>
         <div id="usuario-info">
             <div id="opciones-usuario">
-                <img src="" alt="Foto de Perfil" id="fotoPerfil">
-                <p id="nombreUsuario"></p>
-                <div class="dropdown-content">
+                <img src="<?php echo $foto_perfil; ?>" alt="Foto de Perfil" id="fotoPerfil" onclick="mostrarOpcionesUsuario()">
+                <p id="nombreUsuario">@<?php echo $usuario; ?></p>
+                <div class="dropdown-content" id="opcionesUsuarioDropdown">
                     <a href="editar-perfil.html" onclick="mostrarModal('editar-perfil-modal')">Editar perfil</a>
                     <a href="change-password.html" onclick="mostrarModal('seguridad-modal')">Seguridad</a>
                     <a href="amigos.html" onclick="mostrarModal('amigos-modal')">Amigos</a>
-                    <a href="index.html">Cerrar Sesión</a>
+                    <a href="inicionuevo.php">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -41,48 +42,22 @@ $foto_perfil = $_SESSION['foto_perfil'];
             <button onclick="crearPublicacion()">Publicar</button>
         </section>
 
-        <section id="feed">
+        <section id="feed" class="feed-container">
             <!-- Contenedor de publicaciones -->
         </section>
     </main>
 
-    <div id="editar-perfil-modal">
-        <h2>Editar Perfil</h2>
-        <form onsubmit="guardarCambiosPerfil(); return false;">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-    
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required>
-    
-            <label for="nombre-usuario">Nombre de Usuario:</label>
-            <input type="text" id="nombre-usuario" name="nombre-usuario" required>
-    
-            <label for="correo">Correo Electrónico:</label>
-            <input type="email" id="correo" name="correo" required>
-    
-            <label for="telefono">Número de Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
-    
-            <button type="submit">Guardar Cambios</button>
-        </form>
-    </div>
-
     <script>
+        function mostrarOpcionesUsuario() {
+            var dropdown = document.getElementById("opcionesUsuarioDropdown");
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
 
-        function guardarCambiosPerfil() {
-        // Aquí debes implementar la lógica para guardar los cambios del perfil
-        // Puedes obtener los valores de los campos utilizando document.getElementById
-        // y luego realizar las acciones necesarias (por ejemplo, enviar a un servidor).
-        alert("Cambios de perfil guardados");
-    }
+        function mostrarModal(modalId) {
+            // Lógica para mostrar el modal correspondiente
+            alert("Mostrar modal: " + modalId);
+        }
 
-    function cambiarContraseña() {
-        // Aquí debes implementar la lógica para cambiar la contraseña
-        // Puedes obtener los valores de los campos utilizando document.getElementById
-        // y luego realizar las acciones necesarias (por ejemplo, enviar a un servidor).
-        alert("Contraseña cambiada");
-    }
         const postsData = [];
         let usuarioAutenticado = null;
 

@@ -10,6 +10,28 @@ $pass = $_POST['pasahitza'];
 
 $nuevoDestino = null;
 
+$sql = "SELECT * FROM user WHERE username='$usuario'";
+$result = mysqli_query($conn, $sql);
+
+
+if (mysqli_num_rows($result) > 0) {
+
+    header("Location: index.php?Exixtente=true");
+} else {
+
+    //TODO: encriptar la contraseña y guardar la imagen en el servidor
+
+    $sql = "INSERT INTO `user` (`id`, `nombre`, `apellido`, `username`, `password`, `email`, `create_time`, `foto_perfil`) VALUES (NULL, '$izena', '$abizena', '$usuario', '$pass', '$emaila', CURRENT_TIMESTAMP, '$nuevoDestino')";
+    $result = mysqli_query($conn, $sql);
+    session_start();
+    $_SESSION['user'] = $usuario;
+    $_SESSION['nombre'] = $izena;
+    $_SESSION['apellido'] = $abizena;
+    $_SESSION['email'] = $emaila;
+    $_SESSION['foto_perfil'] = $nuevoDestino;
+    header("Location: dashboard.php");
+}
+
 // TODO: La función de abajo no funciona, me dice que  el file foto no existe
 if ($_FILES['foto'] != null) {
     // irudia gordetzeko direktoria sortzen
@@ -27,25 +49,4 @@ if ($_FILES['foto'] != null) {
     $nuevoDestino = null;
 }
 
-$sql = "SELECT * FROM user WHERE username='$usuario'";
-$result = mysqli_query($conn, $sql);
-
-
-if (mysqli_num_rows($result) > 0) {
-
-    header("Location: registro.php?Exixtente=true");
-} else {
-
-    //TODO: encriptar la contraseña y guardar la imagen en el servidor
-
-    $sql = "INSERT INTO `user` (`id`, `nombre`, `apellido`, `username`, `password`, `email`, `create_time`, `foto_perfill`) VALUES (NULL, '$izena', '$abizena', '$usuario', '$pass', '$emaila', CURRENT_TIMESTAMP, '$nuevoDestino')";
-    $result = mysqli_query($conn, $sql);
-    session_start();
-    $_SESSION['user'] = $usuario;
-    $_SESSION['nombre'] = $izena;
-    $_SESSION['apellido'] = $abizena;
-    $_SESSION['email'] = $emaila;
-    $_SESSION['foto_perfil'] = $nuevoDestino;
-    header("Location: dashboard.php");
-}
 
